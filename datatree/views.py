@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from datatree.models import People, Relation
+from datatree.models import Relation
 from datatree.forms import AppendPeople, AppendChild, TakeIdForm, DeleteForm
 from django.http import Http404
 

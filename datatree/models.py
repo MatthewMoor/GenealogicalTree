@@ -19,10 +19,3 @@ class Relation(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['parent']
-
-
-class People(models.Model):
-    person = models.ForeignKey("Relation", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "{}".format(self.person)

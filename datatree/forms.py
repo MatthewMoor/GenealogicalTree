@@ -1,5 +1,5 @@
 from django import forms
-from datatree.models import People, Relation
+from datatree.models import Relation
 from django.forms import formset_factory
 
 class AppendPeople(forms.Form):
