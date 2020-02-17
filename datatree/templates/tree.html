@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block page_content %}
+{% load mptt_tags %}
+<ul>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-inline">
+            {{ form_node.name }}
+        </div>
+        <button name="append_node" type="submit" class="btn btn-primary">Append person</button>
+    </form>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="exampleFormControlSelect1">Select a child by id</label>
+            {{form_id.child_id}}
+        <label for="exampleFormControlSelect1">Select a parent by id</label>
+            {{form_id.parent_id}}
+        <button name="append_child" type="submit" class="btn btn-success btn-sm">Add child</button>
+    </form>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="exampleFormControlSelect1">Select person by id to delete</label>
+            {{form_delete.child_id}}
+        <button class = "btn btn-danger btn-sm" type="submit" name="DeleteButton">Delete person</button>
+    </form>
+
+    {% recursetree genres %}
+        <li>
+            {{ node.person }} 
+            <p>id - {{node.pk}}</p>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+{% endblock %}
